@@ -1,28 +1,16 @@
+
+from flask import Flask
+from flask import render_template, redirect, request, url_for, flash, session
 from datetime import datetime
-from flask import Flask, render_template, redirect, request, url_for, flash, session
-from models import db, Users, AddExpense
 from config import Config
+from models import db, Users, AddExpense
 from utils.expense_utils import format_currency, get_expenses_summary
-from utils.users_utils import get_user_by_email_and_password, get_user_full_name
+from utils.users_utils import get_user_by_email_and_password, get_user_full_name, is_logged_in, validate_registration_data
 
 
 app = Flask(__name__)
 app.config.from_object(Config)
 db.init_app(app)
-
-
-def is_logged_in():
-    return 'user_id' in session
-
-
-def validate_registration_data(fname, lname, email, password, repeat_password):
-    if not (fname and lname and email and password and repeat_password):
-        return "Please fill out all fields."
-    if password != repeat_password:
-        return "Passwords do not match. Please try again."
-    if Users.query.filter_by(email=email).first():
-        return "Email is already registered. Please login."
-    return None
 
 
 @app.route('/')
