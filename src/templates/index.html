@@ -112,14 +112,20 @@
                 <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle">
             </a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                <li><a class="dropdown-item" href="/logout">Sign out</a></li>
             </ul>
         </div>
         </div>
         <!-- Sidebar Nav - Ends -->
+
+        <!-- Logged In UserName Info - Starts -->
+        <div class="container mt-4">
+            {% if user_name %}
+                <h1>Welcome, {{ user_name }}!</h1>
+            {% else %}
+                <h1>Welcome, Name Not Found!</h1>
+            {% endif %}
+        <!-- Logged In UserName Info - Ends -->
 
         <!-- Dashboard Info Cards Content - Starts -->
         <div class="container-fluid min-vh-100 bg-gradient">
@@ -217,6 +223,7 @@
             </div>
         </div>
         <!-- Dashboard Info Cards Content - Ends -->
+        </div>
 
     </main>
 

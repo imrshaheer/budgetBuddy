@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
+
+    <title>Register</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    <form class="form-signin" action="/register" method="post">
+      <img class="mb-4" src="{{ url_for('static', filename='img/register.png') }}" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
+
+      <!-- Flash Messages Section -->
+      {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+          <div>
+            {% for category, message in messages %}
+              {% if category == 'success' %}
+                <div class="alert alert-success" role="alert">
+                  <p>{{ message }}</p>
+                </div>
+              {% elif category == 'error' %}
+                <div class="alert alert-danger" role="alert">
+                  <p>{{ message }}</p>
+                </div>
+              {% elif category == 'danger' %}
+                <div class="alert alert-danger" role="alert">
+                  <p>{{ message }}</p>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <label for="fname" class="sr-only">First Name</label>
+      <input type="text" id="fname" name="fname" class="form-control" placeholder="First Name" required autofocus>
+
+      <label for="lname" class="sr-only">Last Name</label>
+      <input type="text" id="lname" name="lname" class="form-control" placeholder="Last Name" required>
+
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required>
+
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+
+      <label for="repeatPassword" class="sr-only">Repeat Password</label>
+      <input type="password" id="repeatPassword" name="repeatPassword" class="form-control" placeholder="Repeat Password" required>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+      <p class="mt-2 mb-3 text-muted">
+        <a href="/login">Already have an account?</a>
+      </p>
+      <p class="mt-5 mb-3 text-muted">&copy; 2024</p>
+    </form>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK3p2j/7E0f5pA8i9I0qUp1aYfH6F/JnY1jW4qQ0kJ8MA7i" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UOaM2K6uPmy9xxF6tS0s1LptETgLp1R1b5f2kU29cyG8wG1luTEX8Bd4McI2Y21G" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-Chfyyx2bJm6vH6Rrh9aAq8zyB0cbO5tiq2b8VljneH1v4QF0f9G9IjPyn2V0pB6a" crossorigin="anonymous"></script>
+  </body>
+</html>
